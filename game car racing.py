@@ -85,8 +85,29 @@ class CarRacing:
 
                 pygame.display.update()
                 self.clock.tick(60)
+
+    #defining display message
     def display_message(self,msg):
         font= pygame.font.SysFont("comicsansms", 72, True)
         text = font.render(msg, True, (255,255,255))
         self.gameDisplay.blit(text, (400- text.get_width() //2, 240 - text.get_height() //2))
-        self.display_credit()
+        self.display_credit(
+        pygame.display.update())
+        self.clock.tick(60)
+        sleep(1)
+        car_racing.initialize()
+        car_racing.window()
+
+    def back_ground_road(self):
+        self.gameDisplay.blit(self.bgImg, (self.bg_x1, self.bg_y1))
+        self.gameDisplay.blit(self.bgImg, (self.bg_x2, self.bg_y2))
+
+        self.bg_y1 += self.bg_speed
+        self.bg_y2 += self.bg_speed
+
+        if self.bg_y1 >= self.display_height:
+            self.bg_y1 = -600
+
+        if self.bg_y2 >= self.display_height:
+            self.bg_y2 = -600
+
