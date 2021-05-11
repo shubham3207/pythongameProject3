@@ -85,4 +85,8 @@ class CarRacing:
 
                 pygame.display.update()
                 self.clock.tick(60)
-
+    def display_message(self,msg):
+        font= pygame.font.SysFont("comicsansms", 72, True)
+        text = font.render(msg, True, (255,255,255))
+        self.gameDisplay.blit(text, (400- text.get_width() //2, 240 - text.get_height() //2))
+        self.display_credit()
